@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { INewContact } from "../PhoneBook/PhoneBook";
+import { INewContact } from "../PhoneBook/usePhoneBook";
 import classes from "./ContactAddNew.module.css";
 import ContactAddNewForm from "./ContactAddNewForm";
 

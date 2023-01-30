@@ -5,7 +5,9 @@ function ContactSearchInput() {
     <input
       className={classes.searchInput}
       type="text"
+      name="search"
       placeholder="Search for contact by last name..."
+      onChange={() => {}}
     />
   );
 }

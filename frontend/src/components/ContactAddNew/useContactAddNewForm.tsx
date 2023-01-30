@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { INewContact } from "../PhoneBook/PhoneBook";
+import { INewContact } from "../PhoneBook/usePhoneBook";
 
 const useContactAddNewForm = (
   addNewContact: (newContact: INewContact) => void,

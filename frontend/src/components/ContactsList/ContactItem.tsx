@@ -1,6 +1,6 @@
 import phoneIcon from "../../assets/phone.svg";
 import trashCan from "../../assets/trash-can.svg";
-import { IContact } from "../PhoneBook/PhoneBook";
+import { IContact } from "../PhoneBook/usePhoneBook";
 
 import classes from "./ContactItem.module.css";
 
