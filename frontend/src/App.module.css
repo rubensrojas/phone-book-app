@@ -1,5 +1,8 @@
 .appContainer {
     padding: 2rem;
+
+    max-width: 550px;
+    margin: 0 auto;
 }
 
 .title {

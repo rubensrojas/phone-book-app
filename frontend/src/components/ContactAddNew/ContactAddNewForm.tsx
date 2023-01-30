@@ -35,7 +35,7 @@ function ContactAddNewForm({
           onChange={handleInputChange}
         />
         <input
-          type="number"
+          type="text"
           name="phoneNumber"
           placeholder="Phone Number"
           value={newContact.phoneNumber}

@@ -8,7 +8,7 @@ const useContactAddNewForm = (
   const [newContact, setNewContact] = useState({
     firstName: "",
     lastName: "",
-    phoneNumber: 0,
+    phoneNumber: "",
   });
   const [error, setError] = useState(false);
 
@@ -38,10 +38,20 @@ const useContactAddNewForm = (
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
 
+    let phoneNumberValue: string | null = null;
+
+    if (name === "phoneNumber") {
+      phoneNumberValue = filterNumbers(value);
+    }
+
     setNewContact((oldNewContact) => ({
       ...oldNewContact,
-      [name]: value,
+      [name]: phoneNumberValue ?? value,
     }));
+  };
+
+  const filterNumbers = (str: string) => {
+    return str.replace(/\D/g, "");
   };
 
   return {

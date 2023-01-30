@@ -9,7 +9,7 @@ export interface IContact {
   id: number;
   firstName: string;
   lastName: string;
-  phoneNumber: number;
+  phoneNumber: string;
 }
 
 export type INewContact = Omit<IContact, "id">;
@@ -19,37 +19,37 @@ const mockContacts = [
     id: 1,
     firstName: "Eric",
     lastName: "Elliot",
-    phoneNumber: 21965400174,
+    phoneNumber: "222-555-6575",
   },
   {
     id: 2,
     firstName: "Steve",
     lastName: "Jobs",
-    phoneNumber: 21965400174,
+    phoneNumber: "2204546754",
   },
   {
     id: 3,
     firstName: "Fred",
     lastName: "Allen",
-    phoneNumber: 21965400174,
+    phoneNumber: "2106579886",
   },
   {
     id: 4,
     firstName: "Steve",
     lastName: "Wozniak",
-    phoneNumber: 21965400174,
+    phoneNumber: "3436758786",
   },
   {
     id: 5,
     firstName: "Bill",
     lastName: "Gates",
-    phoneNumber: 21965400174,
+    phoneNumber: "3436549688",
   },
   {
     id: 6,
     firstName: "Rubens",
     lastName: "Rojas",
-    phoneNumber: 21965400174,
+    phoneNumber: "21965400174",
   },
 ];
 

@@ -10,6 +10,16 @@ interface IContactItemProps {
 }
 
 function ContactItem({ contact, deleteContact }: IContactItemProps) {
+  function phoneNumberFormatter(phoneNumber: string) {
+    const match = phoneNumber.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return match[1] + "-" + match[2] + "-" + match[3];
+    }
+    return phoneNumber;
+  }
+
+  const formatedPhoneNumber = phoneNumberFormatter(contact.phoneNumber);
+
   return (
     <div className={classes.contactItem}>
       <div>
@@ -18,7 +28,7 @@ function ContactItem({ contact, deleteContact }: IContactItemProps) {
         >{`${contact.firstName} ${contact.lastName}`}</p>
         <p className={classes.contactItem__phoneNumber}>
           <img src={phoneIcon} alt="Phone" />
-          {contact.phoneNumber}
+          {formatedPhoneNumber}
         </p>
       </div>
       <button
