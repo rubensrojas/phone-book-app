@@ -50,6 +50,7 @@ const placeholderContacts = [
 
 const usePhoneBook = () => {
   const [contacts, setContacts] = useState<IContact[]>(placeholderContacts);
+  const [filteredContacts, setFilteredContacts] = useState<IContact[]>([]);
 
   const deleteContact = (id: number) => {
     setContacts(contacts.filter((contact) => contact.id !== id));
@@ -66,7 +67,19 @@ const usePhoneBook = () => {
     setContacts((oldContacts) => [...oldContacts, newContactWithId]);
   };
 
-  return { contacts, deleteContact, addNewContact };
+  const handleSearchQuery = (query: string) => {
+    if (query) {
+      const filteredContacts = contacts.filter((contact) =>
+        contact.lastName.toLowerCase().includes(query.toLowerCase())
+      );
+
+      setFilteredContacts(filteredContacts);
+    } else {
+      setFilteredContacts(contacts);
+    }
+  };
+
+  return { filteredContacts, deleteContact, addNewContact, handleSearchQuery };
 };
 
 export default usePhoneBook;

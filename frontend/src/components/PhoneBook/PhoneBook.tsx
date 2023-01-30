@@ -6,7 +6,8 @@ import usePhoneBook from "./usePhoneBook";
 import classes from "./PhoneBook.module.css";
 
 function PhoneBook() {
-  const { contacts, deleteContact, addNewContact } = usePhoneBook();
+  const { filteredContacts, deleteContact, addNewContact, handleSearchQuery } =
+    usePhoneBook();
 
   return (
     <div className={classes.phoneBookContainer}>
@@ -15,9 +16,9 @@ function PhoneBook() {
           <h3>Contacts</h3>
           <ContactAddNew addNewContact={addNewContact} />
         </div>
-        <ContactSearchInput />
+        <ContactSearchInput handleSearchQuery={handleSearchQuery} />
       </div>
-      <ContactsList contacts={contacts} deleteContact={deleteContact} />
+      <ContactsList contacts={filteredContacts} deleteContact={deleteContact} />
     </div>
   );
 }
