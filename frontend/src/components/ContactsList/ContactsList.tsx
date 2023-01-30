@@ -1,40 +1,27 @@
+import { IContact } from "../PhoneBook/PhoneBook";
 import ContactItem from "./ContactItem";
+
 import classes from "./ContactsList.module.css";
 
-function ContactsList() {
-  const contacts = [
-    {
-      id: 1,
-      name: "Eric Elliot",
-      phoneNumber: 2225556575,
-    },
-    {
-      id: 2,
-      name: "Eric Elliot",
-      phoneNumber: 2225556575,
-    },
-    {
-      id: 3,
-      name: "Eric Elliot",
-      phoneNumber: 2225556575,
-    },
-    {
-      id: 4,
-      name: "Eric Elliot",
-      phoneNumber: 2225556575,
-    },
-    {
-      id: 5,
-      name: "Eric Elliot",
-      phoneNumber: 2225556575,
-    },
-  ];
+interface IContactsListProps {
+  contacts: IContact[];
+  deleteContact: (id: number) => void;
+}
 
+function ContactsList({ contacts, deleteContact }: IContactsListProps) {
   return (
     <div className={classes.contactsList}>
-      {contacts.map((contact) => (
-        <ContactItem key={contact.id} contact={contact} />
-      ))}
+      {contacts.length > 0 ? (
+        contacts.map((contact) => (
+          <ContactItem
+            key={contact.id}
+            contact={contact}
+            deleteContact={deleteContact}
+          />
+        ))
+      ) : (
+        <p className={classes.withoutContacts}>No contacts found.</p>
+      )}
     </div>
   );
 }

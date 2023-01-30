@@ -4,3 +4,7 @@
     background-color: #fff;
     overflow: hidden;
 }
+
+.withoutContacts {
+    padding: 0.5rem;
+}
