@@ -11,3 +11,9 @@ body {
 body {
     background-color: #f6f6f6;
 }
+
+p,
+input,
+button {
+    font-size: 1rem;
+}

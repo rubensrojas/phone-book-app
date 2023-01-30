@@ -1,0 +1,19 @@
+.searchInput {
+    padding: 0.5rem 1rem 0.5rem 1.75rem;
+
+    border: 1px solid #d3d7dc;
+    border-radius: 4px;
+
+    background-color: #fff;
+    background-image: url("../../assets/magnifying-glass.svg");
+    background-repeat: no-repeat;
+    background-position: 0.5rem 50%;
+    background-size: 14px 14px;
+
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.searchInput:focus {
+    outline: 1px solid #347bf6;
+}

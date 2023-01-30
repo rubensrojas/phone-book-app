@@ -1,0 +1,11 @@
+.addNewContactButton {
+    padding: 0.75rem 1.5rem;
+
+    border-radius: 4px;
+    border: none;
+    background: #347bf6;
+
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+}

@@ -7,7 +7,8 @@ function App() {
   return (
     <div className={classes.appContainer}>
       <h1 className={classes.title}>
-        <img src={addressBook} /> Phone Book App
+        <img src={addressBook} alt="Adress Book" />
+        Phone Book App
       </h1>
       <div className={classes.phoneBookWrapper}>
         <PhoneBook />

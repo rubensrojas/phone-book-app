@@ -1,0 +1,47 @@
+.contactItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #fff;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #dfdfdf;
+}
+.contactItem:last-of-type {
+    border: none;
+}
+
+.contactItem__name {
+    font-size: 1.5rem;
+}
+
+.contactItem__phoneNumber {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+
+    font-size: 14px;
+    color: #a6a6a6;
+}
+
+.contactItem__phoneNumber img {
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+}
+.deleteButton {
+    display: grid;
+    place-items: center;
+    padding: 0.75rem;
+    background-color: #cb444a;
+    border: none;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+.deleteButton img {
+    width: 14px;
+    height: 14px;
+}
