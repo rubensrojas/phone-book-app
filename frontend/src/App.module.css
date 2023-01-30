@@ -1,0 +1,21 @@
+.appContainer {
+    padding: 2rem;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1.5rem;
+
+    font-weight: 500;
+}
+
+.title > img {
+    width: 40px;
+}
+
+.phoneBookWrapper {
+    margin-top: 4rem;
+}
