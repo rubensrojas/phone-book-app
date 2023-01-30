@@ -60,12 +60,23 @@ function PhoneBook() {
     setContacts(contacts.filter((contact) => contact.id !== id));
   };
 
+  const addNewContact = (newContact: INewContact) => {
+    const index = contacts[contacts.length - 1].id + 1;
+
+    const newContactWithId = {
+      ...newContact,
+      id: index,
+    };
+
+    setContacts((oldContacts) => [...oldContacts, newContactWithId]);
+  };
+
   return (
     <div className={classes.phoneBookContainer}>
       <div className={classes.header}>
         <div>
           <h3>Contacts</h3>
-          <ContactAddNew />
+          <ContactAddNew addNewContact={addNewContact} />
         </div>
         <ContactSearchInput />
       </div>
