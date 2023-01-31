@@ -4,10 +4,24 @@ import ContactsList from "../ContactsList";
 import usePhoneBook from "./usePhoneBook";
 
 import classes from "./PhoneBook.module.css";
+import LoadingIcon from "../LoadingIcon";
 
-function PhoneBook() {
-  const { filteredContacts, deleteContact, addNewContact, handleSearchQuery } =
-    usePhoneBook();
+const Loading = () => (
+  <div className={classes.loadingWrapper}>
+    <LoadingIcon />
+    <p>Loading...</p>
+  </div>
+);
+
+const PhoneBook = () => {
+  const {
+    filteredContacts,
+    error,
+    isLoading,
+    deleteContact,
+    addNewContact,
+    handleSearchQuery,
+  } = usePhoneBook();
 
   return (
     <div className={classes.phoneBookContainer}>
@@ -18,9 +32,18 @@ function PhoneBook() {
         </div>
         <ContactSearchInput handleSearchQuery={handleSearchQuery} />
       </div>
-      <ContactsList contacts={filteredContacts} deleteContact={deleteContact} />
+      {isLoading && <Loading />}
+      {!error && !isLoading && (
+        <ContactsList
+          contacts={filteredContacts}
+          deleteContact={deleteContact}
+        />
+      )}
+      {error && (
+        <p>Failed to load data from the server. Please, refresh the page.</p>
+      )}
     </div>
   );
-}
+};
 
 export default PhoneBook;
