@@ -5,6 +5,13 @@ export default class CreateContactController {
   async handle(request: Request, response: Response) {
     const { firstName, lastName, phoneNumber } = request.body;
 
+    const hasOnlyNumbers = /^\d+$/.test(phoneNumber);
+    if (!hasOnlyNumbers) {
+      return response.status(400).json({
+        error: "Invalid phone number. Should have only numbers characters.",
+      });
+    }
+
     try {
       const contact = await prisma.contact.create({
         data: { firstName, lastName, phoneNumber },

@@ -6,6 +6,13 @@ export default class UpdateContactController {
     const { id } = request.params;
     const { firstName, lastName, phoneNumber } = request.body;
 
+    const hasOnlyNumbers = /^\d+$/.test(phoneNumber);
+    if (!hasOnlyNumbers) {
+      return response.status(400).json({
+        error: "Invalid phone number. Should have only numbers characters.",
+      });
+    }
+
     try {
       const contact = await prisma.contact.update({
         where: { id: Number(id) },
