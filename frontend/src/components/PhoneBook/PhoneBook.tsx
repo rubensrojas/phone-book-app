@@ -20,6 +20,7 @@ const PhoneBook = () => {
     isLoading,
     deleteContact,
     addNewContact,
+    editContact,
     handleSearchQuery,
   } = usePhoneBook();
 
@@ -37,6 +38,7 @@ const PhoneBook = () => {
         <ContactsList
           contacts={filteredContacts}
           deleteContact={deleteContact}
+          editContact={editContact}
         />
       )}
       {error && (

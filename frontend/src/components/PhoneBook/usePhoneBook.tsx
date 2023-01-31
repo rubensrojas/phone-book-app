@@ -9,7 +9,9 @@ export interface IContact {
   createdAt?: string;
 }
 
-export type INewContact = Omit<IContact, "id">;
+export interface INewContact extends Omit<IContact, "id"> {
+  id?: number;
+}
 
 const usePhoneBook = () => {
   const [contacts, setContacts] = useState<IContact[]>([]);
@@ -18,7 +20,7 @@ const usePhoneBook = () => {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { get, remove, post } = useRequest();
+  const { get, remove, post, patch } = useRequest();
 
   useEffect(() => {
     loadContacts();
@@ -70,6 +72,23 @@ const usePhoneBook = () => {
     }
   };
 
+  const editContact = async (updatedContact: INewContact) => {
+    try {
+      const res = await patch<{ data: IContact }>(
+        `contacts/${updatedContact.id}`,
+        updatedContact
+      );
+
+      setContacts((oldContacts) =>
+        oldContacts.map((contact) =>
+          contact.id === updatedContact.id ? res.data : contact
+        )
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const handleSearchQuery = (query: string) => {
     if (query) {
       const filteredContacts = contacts.filter((contact) =>
@@ -88,6 +107,7 @@ const usePhoneBook = () => {
     isLoading,
     deleteContact,
     addNewContact,
+    editContact,
     handleSearchQuery,
   };
 };
