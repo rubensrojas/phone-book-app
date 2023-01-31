@@ -4,12 +4,14 @@
   Simple Phone Book App that allows you to save our contacts in our local database with a sweet UI.
 </p>
 
-## Functionalities
+## Functionalities for your Contacts
 
-- Add a new Contact.
+- See all of them.
+- Search by last name.
+- Add a new one.
 - Remove any Contact.
 - Edit any Contact.
-- All your Contacts are save in our local database.
+- And all your Contacts are save in our local database.
 
 ## Installing and Running the project
 
