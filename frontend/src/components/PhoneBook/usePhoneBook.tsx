@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useRequest from "../../hooks/useRequest";
 
 export interface IContact {
   id: number;
@@ -9,48 +10,37 @@ export interface IContact {
 
 export type INewContact = Omit<IContact, "id">;
 
-const placeholderContacts = [
-  {
-    id: 1,
-    firstName: "Eric",
-    lastName: "Elliot",
-    phoneNumber: "2225556575",
-  },
-  {
-    id: 2,
-    firstName: "Steve",
-    lastName: "Jobs",
-    phoneNumber: "2204546754",
-  },
-  {
-    id: 3,
-    firstName: "Fred",
-    lastName: "Allen",
-    phoneNumber: "2106579886",
-  },
-  {
-    id: 4,
-    firstName: "Steve",
-    lastName: "Wozniak",
-    phoneNumber: "3436758786",
-  },
-  {
-    id: 5,
-    firstName: "Bill",
-    lastName: "Gates",
-    phoneNumber: "3436549688",
-  },
-  {
-    id: 6,
-    firstName: "Rubens",
-    lastName: "Rojas",
-    phoneNumber: "5521965400174",
-  },
-];
-
 const usePhoneBook = () => {
-  const [contacts, setContacts] = useState<IContact[]>(placeholderContacts);
+  const [contacts, setContacts] = useState<IContact[]>([]);
   const [filteredContacts, setFilteredContacts] = useState<IContact[]>([]);
+
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { get } = useRequest();
+
+  useEffect(() => {
+    loadContacts();
+  }, []);
+
+  useEffect(() => {
+    setFilteredContacts(contacts);
+  }, [contacts]);
+
+  const loadContacts = async () => {
+    setIsLoading(true);
+
+    try {
+      const res: { data: IContact[] } = await get("contacts");
+
+      setContacts(res.data);
+    } catch (e) {
+      console.error(e);
+      setError(true);
+    }
+
+    setIsLoading(false);
+  };
 
   const deleteContact = (id: number) => {
     setContacts(contacts.filter((contact) => contact.id !== id));
@@ -79,7 +69,14 @@ const usePhoneBook = () => {
     }
   };
 
-  return { filteredContacts, deleteContact, addNewContact, handleSearchQuery };
+  return {
+    filteredContacts,
+    error,
+    isLoading,
+    deleteContact,
+    addNewContact,
+    handleSearchQuery,
+  };
 };
 
 export default usePhoneBook;
