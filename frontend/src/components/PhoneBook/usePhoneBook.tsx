@@ -17,7 +17,7 @@ const usePhoneBook = () => {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { get } = useRequest();
+  const { get, remove } = useRequest();
 
   useEffect(() => {
     loadContacts();
@@ -43,7 +43,15 @@ const usePhoneBook = () => {
   };
 
   const deleteContact = (id: number) => {
-    setContacts(contacts.filter((contact) => contact.id !== id));
+    try {
+      remove(`contacts/${id}`);
+
+      setContacts((oldContacts) =>
+        oldContacts.filter((contact) => contact.id !== id)
+      );
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const addNewContact = (newContact: INewContact) => {
