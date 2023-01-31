@@ -4,9 +4,16 @@ import prisma from "../database/prismaClient";
 export default class GetContactController {
   async many(request: Request, response: Response) {
     try {
-      const contacts = await prisma.contact.findMany();
+      const contacts = await prisma.contact.findMany({
+        select: {
+          id: true,
+          firstName: true,
+          lastName: true,
+          phoneNumber: true,
+        },
+      });
 
-      return response.status(200).json(contacts);
+      return response.status(200).json({ data: contacts });
     } catch (e) {
       return response.status(400).json({ error: e });
     }
@@ -18,9 +25,15 @@ export default class GetContactController {
     try {
       const contact = await prisma.contact.findUnique({
         where: { id: Number(id) },
+        select: {
+          id: true,
+          firstName: true,
+          lastName: true,
+          phoneNumber: true,
+        },
       });
 
-      return response.status(200).json(contact);
+      return response.status(200).json({ data: contact });
     } catch (e) {
       return response
         .status(404)
