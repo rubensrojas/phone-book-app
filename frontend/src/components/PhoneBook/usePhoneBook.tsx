@@ -14,7 +14,7 @@ const placeholderContacts = [
     id: 1,
     firstName: "Eric",
     lastName: "Elliot",
-    phoneNumber: "222-555-6575",
+    phoneNumber: "2225556575",
   },
   {
     id: 2,
