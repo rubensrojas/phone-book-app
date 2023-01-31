@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import prisma from "../database/prismaClient";
 
 export default class GetContactController {
-  async many(request: Request, response: Response) {
+  async all(request: Request, response: Response) {
     try {
       const contacts = await prisma.contact.findMany({
         select: {

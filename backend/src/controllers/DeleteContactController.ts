@@ -3,11 +3,11 @@ import prisma from "../database/prismaClient";
 
 export default class DeleteContactController {
   async handle(request: Request, response: Response) {
-    const { id } = request.body;
+    const { id } = request.params;
 
     try {
       const contact = await prisma.contact.delete({
-        where: { id },
+        where: { id: Number(id) },
       });
 
       return response.status(204).json({ data: contact });

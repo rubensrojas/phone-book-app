@@ -15,10 +15,10 @@ const updateProduct = new UpdateContactController();
 // Routes
 const prefix = "/api/";
 
-router.get(prefix + "contacts", getContact.many);
+router.get(prefix + "contacts", getContact.all);
 router.get(prefix + "contacts/:id", getContact.unique);
 router.post(prefix + "contacts", createProduct.handle);
-router.delete(prefix + "contacts", deleteProduct.handle);
+router.delete(prefix + "contacts/:id", deleteProduct.handle);
 router.patch(prefix + "contacts/:id", updateProduct.handle);
 
 export { router };
