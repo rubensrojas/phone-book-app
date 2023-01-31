@@ -6,6 +6,7 @@ export interface IContact {
   firstName: string;
   lastName: string;
   phoneNumber: string;
+  createdAt?: string;
 }
 
 export type INewContact = Omit<IContact, "id">;
@@ -31,7 +32,7 @@ const usePhoneBook = () => {
     setIsLoading(true);
 
     try {
-      const res: { data: IContact[] } = await get("contacts");
+      const res = await get<{ data: IContact[] }>("contacts");
 
       setContacts(res.data);
     } catch (e) {
@@ -56,7 +57,7 @@ const usePhoneBook = () => {
 
   const addNewContact = async (newContact: INewContact) => {
     try {
-      const res: { data: IContact } = await post("contacts", newContact);
+      const res = await post<{ data: IContact }>("contacts", newContact);
 
       const newContactWithId = {
         ...newContact,
