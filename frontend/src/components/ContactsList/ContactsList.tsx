@@ -1,4 +1,4 @@
-import { IContact } from "../PhoneBook/PhoneBook";
+import { IContact } from "../PhoneBook/usePhoneBook";
 import ContactItem from "./ContactItem";
 
 import classes from "./ContactsList.module.css";
