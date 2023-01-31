@@ -9,9 +9,9 @@
 - See all of them.
 - Search by last name.
 - Add a new one.
-- Remove any Contact.
-- Edit any Contact.
-- And all your Contacts are save in our local database.
+- Remove any one.
+- Edit your contact info.
+- All your Contacts are save in our local database.
 
 ## Installing and Running the project
 
