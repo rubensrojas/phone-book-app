@@ -26,7 +26,7 @@ function ContactAddNew({ addNewContact }: IContactAddNewProps) {
 
       {isModalOpen && (
         <ContactFormModal
-          addNewContact={addNewContact}
+          handleContact={addNewContact}
           closeModal={toggleIsModalOpen}
         />
       )}

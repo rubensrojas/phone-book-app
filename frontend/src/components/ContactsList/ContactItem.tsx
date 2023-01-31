@@ -1,5 +1,6 @@
 import phoneIcon from "../../assets/phone.svg";
-import trashCan from "../../assets/trash-can.svg";
+import deleteIcon from "../../assets/trash-can.svg";
+import editIcon from "../../assets/pen-to-square.svg";
 import { IContact } from "../PhoneBook/usePhoneBook";
 
 import classes from "./ContactItem.module.css";
@@ -7,9 +8,14 @@ import classes from "./ContactItem.module.css";
 interface IContactItemProps {
   contact: IContact;
   deleteContact: (id: number) => void;
+  editContact: (id: number) => void;
 }
 
-function ContactItem({ contact, deleteContact }: IContactItemProps) {
+function ContactItem({
+  contact,
+  deleteContact,
+  editContact,
+}: IContactItemProps) {
   function phoneNumberFormatter(phoneNumber: string) {
     const match = phoneNumber.match(/^(\d{3})(\d{3})(\d{4})$/);
     const brazilianMatch = phoneNumber.match(/^(\d{2})(\d{2})(\d{5})(\d{4})$/);
@@ -34,13 +40,22 @@ function ContactItem({ contact, deleteContact }: IContactItemProps) {
           {formatedPhoneNumber}
         </p>
       </div>
-      <button
-        className={classes.deleteButton}
-        type="button"
-        onClick={() => deleteContact(contact.id)}
-      >
-        <img src={trashCan} alt="Trash can" />
-      </button>
+      <div className={classes.contactItem__actions}>
+        <button
+          className={classes.updateButton}
+          type="button"
+          onClick={() => editContact(contact.id)}
+        >
+          <img src={editIcon} alt="Edit Contact" />
+        </button>
+        <button
+          className={classes.deleteButton}
+          type="button"
+          onClick={() => deleteContact(contact.id)}
+        >
+          <img src={deleteIcon} alt="Delete Contact" />
+        </button>
+      </div>
     </div>
   );
 }

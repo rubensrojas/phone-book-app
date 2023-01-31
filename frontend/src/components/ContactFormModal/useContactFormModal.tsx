@@ -2,13 +2,14 @@ import { useState } from "react";
 import { INewContact } from "../PhoneBook/usePhoneBook";
 
 const useContactFormModal = (
-  addNewContact: (newContact: INewContact) => void,
-  closeModal: () => void
+  handleContact: (newContact: INewContact) => void,
+  closeModal: () => void,
+  contact?: INewContact | null
 ) => {
   const [newContact, setNewContact] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
+    firstName: contact?.firstName ?? "",
+    lastName: contact?.lastName ?? "",
+    phoneNumber: contact?.phoneNumber ?? "",
   });
   const [error, setError] = useState(false);
 
@@ -19,7 +20,7 @@ const useContactFormModal = (
       return;
     }
 
-    addNewContact(newContact);
+    handleContact(newContact);
     closeModal();
   };
 

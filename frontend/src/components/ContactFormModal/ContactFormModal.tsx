@@ -4,21 +4,23 @@ import classes from "./ContactFormModal.module.css";
 import useContactFormModal from "./useContactFormModal";
 
 interface IContactFormModalProps {
-  addNewContact: (newContact: INewContact) => void;
+  handleContact: (newContact: INewContact) => void;
   closeModal: () => void;
+  contact?: INewContact | null;
 }
 
 function ContactFormModal({
-  addNewContact,
+  handleContact,
   closeModal,
+  contact,
 }: IContactFormModalProps) {
   const { error, newContact, handleInputChange, onSubmit } =
-    useContactFormModal(addNewContact, closeModal);
+    useContactFormModal(handleContact, closeModal, contact);
 
   return (
     <div className={classes.modal}>
-      <form className={classes.newContactFormModal} onSubmit={onSubmit}>
-        <p>Add New Contact</p>
+      <form className={classes.newContactForm} onSubmit={onSubmit}>
+        <p>Contact Form</p>
         <input
           type="text"
           name="firstName"
@@ -45,7 +47,7 @@ function ContactFormModal({
           <button type="button" onClick={closeModal}>
             Cancel
           </button>
-          <button type="submit">Add</button>
+          <button type="submit">Save</button>
         </div>
       </form>
     </div>

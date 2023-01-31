@@ -31,17 +31,31 @@
     width: 12px;
     height: 12px;
 }
-.deleteButton {
+
+.contactItem__actions {
+    display: flex;
+    gap: 4px;
+}
+
+.contactItem__actions img {
+    width: 14px;
+    height: 14px;
+}
+
+.contactItem__actions button {
     display: grid;
     place-items: center;
     padding: 0.75rem;
-    background-color: #cb444a;
     border: none;
     border-radius: 4px;
 
     cursor: pointer;
 }
-.deleteButton img {
-    width: 14px;
-    height: 14px;
+
+.updateButton {
+    background-color: #347bf6;
+}
+
+.deleteButton {
+    background-color: #cb444a;
 }
