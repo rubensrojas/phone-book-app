@@ -17,7 +17,7 @@ const usePhoneBook = () => {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { get, remove } = useRequest();
+  const { get, remove, post } = useRequest();
 
   useEffect(() => {
     loadContacts();
@@ -42,9 +42,9 @@ const usePhoneBook = () => {
     setIsLoading(false);
   };
 
-  const deleteContact = (id: number) => {
+  const deleteContact = async (id: number) => {
     try {
-      remove(`contacts/${id}`);
+      await remove(`contacts/${id}`);
 
       setContacts((oldContacts) =>
         oldContacts.filter((contact) => contact.id !== id)
@@ -54,15 +54,19 @@ const usePhoneBook = () => {
     }
   };
 
-  const addNewContact = (newContact: INewContact) => {
-    const index = contacts[contacts.length - 1].id + 1;
+  const addNewContact = async (newContact: INewContact) => {
+    try {
+      const res: { data: IContact } = await post("contacts", newContact);
 
-    const newContactWithId = {
-      ...newContact,
-      id: index,
-    };
+      const newContactWithId = {
+        ...newContact,
+        id: res.data.id,
+      };
 
-    setContacts((oldContacts) => [...oldContacts, newContactWithId]);
+      setContacts((oldContacts) => [...oldContacts, newContactWithId]);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const handleSearchQuery = (query: string) => {
