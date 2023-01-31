@@ -17,7 +17,7 @@ router.get('/contacts', getContact.many);
 router.get('/contacts/:id', getContact.unique);
 router.post('/contacts', createProduct.handle);
 router.delete('/contacts', deleteProduct.handle);
-router.patch('/contacts', updateProduct.handle);
+router.patch('/contacts/:id', updateProduct.handle);
 
 
 export { router };

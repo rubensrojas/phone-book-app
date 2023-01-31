@@ -4,11 +4,12 @@ import prisma from '../database/prismaClient';
 export default class UpdateContactController {
   async handle(request: Request, response: Response) {
 
-    const { id, firstName, lastName, phoneNumber } = request.body;
+    const { id } = request.params;
+    const { firstName, lastName, phoneNumber } = request.body;
 
     try {
       const contact = await prisma.contact.update({
-        where: { id },
+        where: { id: Number(id) },
         data: { firstName, lastName, phoneNumber }
       })
 
