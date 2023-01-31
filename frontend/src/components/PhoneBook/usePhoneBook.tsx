@@ -44,7 +44,7 @@ const placeholderContacts = [
     id: 6,
     firstName: "Rubens",
     lastName: "Rojas",
-    phoneNumber: "21965400174",
+    phoneNumber: "5521965400174",
   },
 ];
 

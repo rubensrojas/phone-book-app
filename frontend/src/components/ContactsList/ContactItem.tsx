@@ -12,8 +12,11 @@ interface IContactItemProps {
 function ContactItem({ contact, deleteContact }: IContactItemProps) {
   function phoneNumberFormatter(phoneNumber: string) {
     const match = phoneNumber.match(/^(\d{3})(\d{3})(\d{4})$/);
+    const brazilianMatch = phoneNumber.match(/^(\d{2})(\d{2})(\d{5})(\d{4})$/);
     if (match) {
       return match[1] + "-" + match[2] + "-" + match[3];
+    } else if (brazilianMatch) {
+      return `+${brazilianMatch[1]} (${brazilianMatch[2]}) ${brazilianMatch[3]}-${brazilianMatch[4]}`;
     }
     return phoneNumber;
   }
