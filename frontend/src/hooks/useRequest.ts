@@ -26,13 +26,13 @@ const useRequest = () => {
     return response.json();
   };
 
-  const remove = async <Type>(endpoint: string): Promise<Type> => {
+  const remove = async <Type>(endpoint: string): Promise<void> => {
     const response = await fetch(API_URL + endpoint, {
       method: "DELETE",
       headers,
     });
 
-    return response.json();
+    return;
   };
 
   const post = async <Type>(endpoint: string, body?: any): Promise<Type> => {
