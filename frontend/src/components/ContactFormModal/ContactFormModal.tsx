@@ -1,24 +1,23 @@
-import React, { useState } from "react";
 import { INewContact } from "../PhoneBook/usePhoneBook";
 
-import classes from "./ContactAddNewForm.module.css";
-import useContactAddNewForm from "./useContactAddNewForm";
+import classes from "./ContactFormModal.module.css";
+import useContactFormModal from "./useContactFormModal";
 
-interface IContactAddNewFormProps {
+interface IContactFormModalProps {
   addNewContact: (newContact: INewContact) => void;
   closeModal: () => void;
 }
 
-function ContactAddNewForm({
+function ContactFormModal({
   addNewContact,
   closeModal,
-}: IContactAddNewFormProps) {
+}: IContactFormModalProps) {
   const { error, newContact, handleInputChange, onSubmit } =
-    useContactAddNewForm(addNewContact, closeModal);
+    useContactFormModal(addNewContact, closeModal);
 
   return (
     <div className={classes.modal}>
-      <form className={classes.newContactForm} onSubmit={onSubmit}>
+      <form className={classes.newContactFormModal} onSubmit={onSubmit}>
         <p>Add New Contact</p>
         <input
           type="text"
@@ -53,4 +52,4 @@ function ContactAddNewForm({
   );
 }
 
-export default ContactAddNewForm;
+export default ContactFormModal;

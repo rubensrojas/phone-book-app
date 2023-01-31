@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { INewContact } from "../PhoneBook/usePhoneBook";
 
-const useContactAddNewForm = (
+const useContactFormModal = (
   addNewContact: (newContact: INewContact) => void,
   closeModal: () => void
 ) => {
@@ -62,4 +62,4 @@ const useContactAddNewForm = (
   };
 };
 
-export default useContactAddNewForm;
+export default useContactFormModal;

@@ -1,7 +1,7 @@
 import { useState } from "react";
+import ContactFormModal from "../ContactFormModal";
 import { INewContact } from "../PhoneBook/usePhoneBook";
 import classes from "./ContactAddNew.module.css";
-import ContactAddNewForm from "./ContactAddNewForm";
 
 interface IContactAddNewProps {
   addNewContact: (newContact: INewContact) => void;
@@ -25,7 +25,7 @@ function ContactAddNew({ addNewContact }: IContactAddNewProps) {
       </button>
 
       {isModalOpen && (
-        <ContactAddNewForm
+        <ContactFormModal
           addNewContact={addNewContact}
           closeModal={toggleIsModalOpen}
         />
